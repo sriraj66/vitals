@@ -27,6 +27,30 @@ def plogin(request):
 
 def psignup(request):
     context = {}
+    if request.POST:
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        number = request.POST.get("number")
+
+        uname = request.POST.get("uname")
+        p1 = request.POST.get("p1")
+        p2 = request.POST.get("p2")
+
+        try:
+            if p1==p2:
+                user = User(first_name=name,email=email,password=p1,username=uname)
+                user.save()
+                user.set_password(p1)
+                user.save()
+                
+                pro = Profile(user=user,number=number,desg=DES[0][0])
+                pro.save()
+
+                return redirect("plogin")
+            else:
+                print("Password Not Same")
+        except Exception as e:
+            print(e)
 
     return render(request, 'core/psignup.html', context=context)
 
