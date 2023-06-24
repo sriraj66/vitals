@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login</title>
+
+    <style>
+        body {
+            background: #7F7FD5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #91EAE4, #86A8E7, #7F7FD5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #91EAE4, #86A8E7, #7F7FD5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+        }
+
+        .wraper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .txt-box {
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        input{
+            height: 30px;
+            width: 250px;
+            text-align: center;
+            font-size: larger;
+            border: 2px solid;
+            font-weight: bolder;
+        }
+
+        button{
+            width: 140px;
+            height: 3em;
+            border: 2px solid;
+            font-weight: bolder;
+            font-size: medium;
+        }
+
+
+</style>
+
+</head>
+
+<body>
+
+    <div class="wraper">
+        <br>
+        <div class="logo"></div>
+        <br>
+        <form method="POST">
+        {% csrf_token %}
+            <div class="txt-box">
+                <input type="text" name="username" id="" placeholder="Doctor Username" >
+            </div>
+        
+            <div class="txt-box">
+                <input type="password" name="password" id="" placeholder="Password">
+            </div>
+        
+            <div class="txt-box">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+
+    <style>
+        body {
+            background: #7F7FD5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to left, #91EAE4, #86A8E7, #7F7FD5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to left, #91EAE4, #86A8E7, #7F7FD5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 10px;
+            
+        }
+
+        .time,
+        .date {
+            border:2px solid;
+            background-color: whitesmoke;
+            padding: .3em;
+            text-align: center;
+            font-size: larger;
+            font-weight: bolder;
+
+            
+        }
+
+        .wraper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            overflow: hidden;
+            width: 100%;
+            padding: 4px;
+        }
+
+        
+        
+        button{
+            width: 140px;
+            height: 2.2em;
+            border: 2px solid;
+            font-weight: bolder;
+            font-size: medium;
+        }
+        .btn{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.337);
+            border-radius: 10px;
+        }
+        .row{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            color: red;            
+        }
+        .rr p{
+            color: #002fff;
+        }
+        .re p{
+            color: #ff00b3;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wraper">
+
+        <div class="logo">
+            <img src="" alt="">
+        </div>
+
+        <div class="top">
+            <div class="date" id="date">20/06/2023</div>
+            <div class="time" id="time">07.58 P.M</div>
+        </div>
+
+        <div class="content">
+
+            <div class="row">
+                <p>PATIENT ID</p>
+                <p>{{user.username}}</p>
+            </div>
+
+            
+            <div class="row">
+                <p>PATIENT NAME</p>
+                <p>{{user.first_name}}</p>
+            </div>
+
+            
+            <div class="row">
+                <p>BODY TEMPERATURE</p>
+                <p>{{obj.bt}} *C</p>
+            </div>
+
+            <div class="row">
+                <p>SPO2</p>
+                <p>{{obj.spo2}} %</p>
+            </div>
+            
+            <div class="row">
+                <p>PULSE RATE</p>
+                <p>{{obj.pr}} mmg</p>
+            </div>
+            
+            <div class="row">
+                <p>BLOOD PRESSURE</p>
+                <p>{{obj.bp}}/80 mmHg</p>
+            </div>
+            
+            <div class="row rr">
+                <p>CUMULATIVE SCORE</p>
+                <p>{{obj.cm}}/7</p>
+            </div>
+            <div class="row rr">
+                <p>CRITICALITY LEVEL</p>
+                <p>{{obj.cl}}</p>
+            </div>
+            <div class="row rr">
+                <p>HEALTH CONDITION</p>
+                <p>{{HC}}</p>
+            </div>
+            <div class="row re">
+                <p>RECOMMENDATION</p>
+                <p>{{REC}}</p>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+    <script>
+        const date = new Date();
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        // This arrangement can be altered based on how we want the date's format to appear.
+        let currentDate = `${day}/${month}/${year}`;
+        document.getElementById("date").innerHTML=currentDate;
+    
+        const element = document.getElementById('time');
+      
+      setInterval(function () {
+        const currentDate = new Date();
+        element.innerText = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+      }, 1000);
+    </script>
+
+</body>
+
+</html>
