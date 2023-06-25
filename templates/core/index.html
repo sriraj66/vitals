@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vital</title>
     <style>
-        
         body {
             background: #7F7FD5;
             /* fallback for old browsers */
@@ -17,67 +16,72 @@
 
         }
 
-        .box{
+        .box {
             border: 1px solid;
             padding: 10px;
             background-color: rgb(236, 5, 205);
             max-width: 300px;
             margin: 20px;
         }
-        .circle{
+
+        .circle {
             padding: 10px;
             background-color: #fff;
             border: 1px solid;
             border-radius: 50%;
             text-transform: uppercase;
         }
-        .menu-wraper{
+
+        .menu-wraper {
             display: flex;
             align-items: center;
-            justify-content: center;            
+            justify-content: center;
         }
-        .menu-wraper div{
+
+        .menu-wraper div {
             padding: 10px;
         }
-        a{
+
+        a {
             color: black;
             text-decoration: none;
         }
-        
     </style>
 </head>
 
 <body>
 
     <style>
-        .logo{
+        .logo {
             display: flex;
             width: 100%;
-            
+
             justify-content: center;
             align-items: center;
         }
     </style>
     <div class="logo">
-        <img height="200px" width="auto" src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9" alt="">
+        <img height="200px" width="auto"
+            src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9"
+            alt="">
     </div>
 
     <div class="menu-wraper">
-        
+
         <div>
             <div class="box">
                 <div class="circle">
                     <h2><a href="{% url 'dlogin' %}">Doctor</a></h2>
                 </div>
             </div>
-            
+
             <div class="box">
                 <div class="circle">
-                    <h2>About</h2>
+                    <h2><a href="{% url 'about' %}">About</a></h2>
                 </div>
             </div>
         </div>
-        
+
         <div>
             <div class="box">
                 <div class="circle">
@@ -86,7 +90,8 @@
             </div>
             <div class="box">
                 <div class="circle">
-                    <h2><small>contact</small></h2>
+                    <h2><a href="{% url 'contact' %}">Contact</a></h2>
+
                 </div>
             </div>
         </div>

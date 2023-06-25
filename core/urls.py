@@ -15,5 +15,7 @@ urlpatterns = [
     path("doclist",doc_list,name='doclist'),
     path("patlist",patlist,name='patlist'),
 
-    path("err",error,name='error')
+    path("err",error,name='error'),
+    path("about",about,name='about'),
+    path("contact",contact,name='contact'),
 ]
