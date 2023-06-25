@@ -94,8 +94,17 @@
 
     <div class="wraper">
 
+        <style>
+            .logo{
+                display: flex;
+                width: 100%;
+                
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
         <div class="logo">
-            <img src="" alt="">
+            <img height="200px" width="auto" src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9" alt="">
         </div>
 
         <div class="top">
@@ -107,13 +116,13 @@
 
             <div class="row">
                 <p>PATIENT ID</p>
-                <p>{{user.username}}</p>
+                <p>{{obj.user}}</p>
             </div>
 
             
             <div class="row">
                 <p>PATIENT NAME</p>
-                <p>{{user.first_name}}</p>
+                <p>{{obj.user.first_name}}</p>
             </div>
 
             
@@ -181,7 +190,17 @@
         element.innerText = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
       }, 1000);
     </script>
-
+{% if messages %}
+<script>
+     alert(`
+     
+     {% for i in messages %}
+      {{i}},
+     {% endfor %}
+     
+     `);
+</script>
+{% endif %}
 </body>
 
 </html>

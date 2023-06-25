@@ -78,7 +78,7 @@
         .cell {
             overflow: hidden;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             width: 100%;
             background-color: rgba(255, 255, 255, 0.337);
             border-radius: 10px;
@@ -86,10 +86,8 @@
             margin-top: 6px;
         }
 
-        .left,
-        .right,
-        .left small,
-        .right small {
+        
+        .cell strong {
             display: flex;
             margin: 10px;
             width: 50%;
@@ -99,40 +97,73 @@
         .tit {
             color: red;
         }
+        .add-treat{
+            position:absolute;
+            right: 50%;
+            left: 50%;
+            bottom: 10%;
+
+        }
+        .add-treat a{
+            border: 2px solid;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: white;
+            text-align: center;
+            font-size: larger;
+            font-weight: bolder;
+        }
+
     </style>
 
 </head>
 
 <body>
+    {% if messages %}
+    <script>
+         alert(`
+         
+         {% for i in messages %}
+          {{i}},
+         {% endfor %}
+         
+         `);
+    </script>
+    {% endif %}
+    
+
+    <div class="add-treat">
+        <a href="{% url 'dig' %}">+</a>
+    </div>
 
     <div class="wraper">
 
+        <style>
+            .logo{
+                display: flex;
+                width: 100%;
+                
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
         <div class="logo">
-            <img src="" alt="">
-        </div>
+            <img height="200px" width="auto" src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9" alt="">
+        </div>   
 
         <div class="top">
             <div class="date" id="date">20/06/2023</div>
             <div class="time" id="time">07.58 P.M</div>
         </div>
-
         <div class="content">
-
+            {% for i in pat %}
             <div class="cell">
-                <div class="left">
-                    <small>
-                        <p class="tit">PATIENT NAME :</p>
-                        <p>SRIRAM</p>
-                    </small>
-                </div>
-                <div class="right">
-                    <small>
-                        <p class="tit">CONDITION : </p>
-                        <p>NORMAl</p>
-                    </small>
-                </div>
+                <strong>
+                    <p class="tit">PATIENT ID : </p>
+                    <p><a href="{% url 'result' i.id %}" style="margin-left: 3px;" > {{i.user.username}}</a></p>
+                </strong>
             </div>
-
+            {% endfor %}
         </div>
 
 

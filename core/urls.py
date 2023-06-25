@@ -10,5 +10,10 @@ urlpatterns = [
 
     path("logout",logout,name='logout'),
     path("result/<int:id>",result,name='result'),
-    path("pat",patients,name='pat')
+    path("pat",patients,name='pat'),
+    
+    path("doclist",doc_list,name='doclist'),
+    path("patlist",patlist,name='patlist'),
+
+    path("err",error,name='error')
 ]

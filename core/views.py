@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth import login, logout, authenticate
-
+from django.contrib.messages import success
 
 def index(request):
     context = {}
@@ -19,7 +19,7 @@ def plogin(request):
         if user:
             login(request, user)
             if user.profile.desg == 'PATIENT':
-                return redirect('dig')
+                return redirect('patlist')
             else:
                 return redirect('dlogin')
     return render(request, 'core/plogin.html', context=context)
@@ -50,7 +50,7 @@ def psignup(request):
             else:
                 print("Password Not Same")
         except Exception as e:
-            print(e)
+            success(request,e)
 
     return render(request, 'core/psignup.html', context=context)
 
@@ -64,10 +64,14 @@ def dlogin(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
+
             if user.profile.desg == 'DOCTOR':
-                return redirect('pat')
+                return redirect('doclist')
             else:
                 return redirect('plogin')
+        else:
+            success(request,"Invalid Id,Password")
+            
     return render(request, 'core/dlogin.html', context=context)
 
 
@@ -130,20 +134,34 @@ def vit(bp,sp,bt,pr):
 def dig(request):
     context = {}
     if request.POST:
+        doctor = request.user
         bp = int(request.POST.get('bp'))
         spo2 = int(request.POST.get('spo2'))
         bt = float(request.POST.get('bt'))
         pr = int(request.POST.get('pr'))
-        user = request.user
+        user = User.objects.get(username=request.POST.get("patient"))
 
         cm,cl = vit(bp=bp,sp=spo2,bt=bt,pr=pr)
     
         
-        obj = Vitals(bp=bp,spo2=spo2,bt=bt,pr=pr,user=user,cl=LEVEL[cl][0],cm=cm)
+        obj = Vitals(bp=bp,spo2=spo2,bt=bt,pr=pr,user=user,doctor=request.user,cl=LEVEL[cl][0],cm=cm)
         obj.save()
         return redirect('result',obj.id)
 
     return render(request, 'core/dig.html', context=context)
+
+def doc_list(request):
+    context = {
+        'pat':Vitals.objects.filter(doctor=request.user)
+    }
+    return render(request,'core/doclist.html',context)
+
+
+def patient_treatments(request):
+    context = {
+        'pat':Vitals.objects.filter(user=request.user)
+    }
+    return render(request,'core/treat.html',context)
 
 def result(request,id):
     context = {
@@ -170,6 +188,12 @@ def result(request,id):
     
     return render(request,'core/result.html',context)
 
+def patlist(request):
+    context = {
+        'pat':Vitals.objects.filter(user=request.user)
+    }
+
+    return render(request,'core/patlist.html',context)
 
 def patients(request):
     context = {
@@ -179,3 +203,8 @@ def patients(request):
 def logout(request):
     logout(request)
     return redirect('index')
+
+
+def error(request):
+
+    return render(request,'core/error.html')

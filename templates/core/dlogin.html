@@ -53,10 +53,33 @@
 </head>
 
 <body>
-
+    
+    {% if messages %}
+    <script>
+         alert(`
+         
+         {% for i in messages %}
+          {{i}},
+         {% endfor %}
+         
+         `);
+    </script>
+    {% endif %}
+    <style>
+        .logo{
+            display: flex;
+            width: 100%;
+            
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <div class="logo">
+        <img height="200px" width="auto" src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9" alt="">
+    </div>
     <div class="wraper">
         <br>
-        <div class="logo"></div>
+        
         <br>
         <form method="POST">
         {% csrf_token %}

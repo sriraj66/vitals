@@ -104,6 +104,54 @@
 </head>
 
 <body>
+
+    <div class="wraper">
+
+        <style>
+            .logo{
+                display: flex;
+                width: 100%;
+                
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <div class="logo">
+            <img height="200px" width="auto" src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9" alt="">
+        </div>
+
+        <div class="top">
+            <div class="date" id="date">20/06/2023</div>
+            <div class="time" id="time">07.58 P.M</div>
+        </div>
+        <div class="content">
+            {% if pat %}
+            {% for i in pat %}
+            <div class="cell">
+                <div class="left">
+                    <small>
+                        <p class="tit">PATIENT NAME :</p>
+                        <p><a href="{% url 'result' i.id %}">{{i.user.first_name}}</a></p>
+                    </small>
+                </div>
+                <div class="right">
+                    <small>
+                        <p class="tit">Updated : </p>
+                        <p>{{i.timestramp}}</p>
+                    </small>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No Records found</p>
+            {% endif %}
+        </div>
+
+
+    </div>
+
+
+    </div>
     {% if messages %}
     <script>
          alert(`
@@ -115,41 +163,6 @@
          `);
     </script>
     {% endif %}
-    <div class="wraper">
-
-        <div class="logo">
-            <img src="" alt="">
-        </div>
-
-        <div class="top">
-            <div class="date" id="date">20/06/2023</div>
-            <div class="time" id="time">07.58 P.M</div>
-        </div>
-        <div class="content">
-            {% for i in pat %}
-            <div class="cell">
-                <div class="left">
-                    <small>
-                        <p class="tit">PATIENT NAME :</p>
-                        <p><a href="{% url 'result' i.id %}">{{i.user.first_name}}</a></p>
-                    </small>
-                </div>
-                <div class="right">
-                    <small>
-                        <p class="tit">CONDITION : </p>
-                        <p>{{i.cl}}</p>
-                    </small>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-
-    </div>
-
-
-    </div>
-
     <script>
         const date = new Date();
 

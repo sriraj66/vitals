@@ -19,7 +19,8 @@ class Profile(models.Model):
     
 
 class Vitals(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
+    doctor = models.ForeignKey(User,on_delete=models.CASCADE,related_name='doctor',blank=True)
     bt = models.FloatField()
     spo2 = models.IntegerField()
     pr = models.IntegerField()

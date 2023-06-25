@@ -98,11 +98,21 @@
 </head>
 
 <body>
+    
 
     <div class="wraper">
 
+        <style>
+            .logo{
+                display: flex;
+                width: 100%;
+                
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
         <div class="logo">
-            <img src="" alt="">
+            <img height="200px" width="auto" src="https://firebasestorage.googleapis.com/v0/b/gastore-395fe.appspot.com/o/1-removebg-preview.png?alt=media&token=7f53aacf-2ccb-4a38-8946-f09f72695ef9" alt="">
         </div>
 
         <div class="top">
@@ -113,7 +123,11 @@
         <div class="form">
             <form method="POST">
                 {% csrf_token %}
-
+                <div class="ele-wrap">
+                    <label for="">Patient ID</label>
+                    <input type="text" name="patient" id="" placeholder="Patient ID">
+                </div>
+                <br>
                 <div class="ele-wrap">
                     <label for="">BT</label>
                     <input type="text" name="bt" id="" placeholder="BT">
@@ -148,7 +162,17 @@
 
 
     </div>
-
+    {% if messages %}
+    <script>
+         alert(`
+         
+         {% for i in messages %}
+          {{i}},
+         {% endfor %}
+         
+         `);
+    </script>
+    {% endif %}
     <script>
         const date = new Date();
 
