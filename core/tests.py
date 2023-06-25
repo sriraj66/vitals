@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+from core.models import *
 passwd = ["q81vzG", "94xP3m", "H1lS2T", "4pOM7v", "6W9Fwo",
           "yKn2Qd", "sN4jaE", "e5pDJh", "vzB8nR", "p9SxYu"]
 username = ["arjun", "divya", "gowtham", "kavitha",
@@ -19,7 +21,7 @@ email = [
     "vani@example.com"
 ]
 
-name[i],username[i],passwd[i],numbers[i],email[i]
+
 
 def create_user(name, u, p, n,e):
     user = User(username=u, password=p, first_name=name,email=e)
@@ -30,3 +32,6 @@ def create_user(name, u, p, n,e):
 
     print(user.id,pro.id)
 
+
+for i in range(10):
+    create_user(name[i],username[i],passwd[i],numbers[i],email[i])
