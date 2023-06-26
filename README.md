@@ -1,6 +1,5 @@
 # Design of Online Vitals Monitor by Integrating Internet of Things-enabled Sensors and Big Data Analytics
 
-![Project Logo](logo.png)
 
 ## Table of Contents
 - [Introduction](#introduction)
