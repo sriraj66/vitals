@@ -96,4 +96,4 @@ Contributions to this project are welcome. To contribute, follow these steps:
 . Submit a pull request explaining your changes.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://opensource.org/license/mit/)).
